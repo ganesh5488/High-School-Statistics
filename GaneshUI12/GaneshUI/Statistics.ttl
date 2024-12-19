@@ -1,0 +1,214 @@
+@prefix ex: <http://www.example.org/statistics-education#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# Classes
+ex:StatisticsCourse a owl:Class .
+ex:IntroductoryStatistics a owl:Class ;
+    rdfs:subClassOf ex:StatisticsCourse .
+ex:AdvancedStatistics a owl:Class ;
+    rdfs:subClassOf ex:StatisticsCourse .
+ex:AppliedStatistics a owl:Class ;
+    rdfs:subClassOf ex:StatisticsCourse .
+
+# Advanced Statistics Subclasses
+ex:MultivariateAnalysis a owl:Class ;
+    rdfs:subClassOf ex:AdvancedStatistics .
+ex:TimeSeriesAnalysis a owl:Class ;
+    rdfs:subClassOf ex:AdvancedStatistics .
+ex:NonParametricStatistics a owl:Class ;
+    rdfs:subClassOf ex:AdvancedStatistics .
+ex:BayesianStatistics a owl:Class ;
+    rdfs:subClassOf ex:AdvancedStatistics .
+
+# Statistical Concepts
+ex:StatisticalConcept a owl:Class .
+ex:DescriptiveStatistics a owl:Class ;
+    rdfs:subClassOf ex:StatisticalConcept .
+ex:InferentialStatistics a owl:Class ;
+    rdfs:subClassOf ex:StatisticalConcept .
+ex:Probability a owl:Class ;
+    rdfs:subClassOf ex:StatisticalConcept .
+
+# Probability Subclasses
+ex:DiscreteProbability a owl:Class ;
+    rdfs:subClassOf ex:Probability .
+ex:BinomialDistribution a owl:Class ;
+    rdfs:subClassOf ex:DiscreteProbability .
+ex:PoissonDistribution a owl:Class ;
+    rdfs:subClassOf ex:DiscreteProbability .
+
+ex:ContinuousProbability a owl:Class ;
+    rdfs:subClassOf ex:Probability .
+ex:NormalDistribution a owl:Class ;
+    rdfs:subClassOf ex:ContinuousProbability .
+ex:ExponentialDistribution a owl:Class ;
+    rdfs:subClassOf ex:ContinuousProbability .
+
+ex:LawOfLargeNumbers a owl:Class ;
+    rdfs:subClassOf ex:Probability .
+ex:CentralLimitTheorem a owl:Class ;
+    rdfs:subClassOf ex:Probability .
+
+# Statistical Operations
+ex:StatisticalOperation a owl:Class .
+ex:Mean a owl:Class ;
+    rdfs:subClassOf ex:StatisticalOperation .
+ex:Median a owl:Class ;
+    rdfs:subClassOf ex:StatisticalOperation .
+ex:Mode a owl:Class ;
+    rdfs:subClassOf ex:StatisticalOperation .
+
+# Other Classes
+ex:User_Data a owl:Class .
+ex:CalculationResult a owl:Class .
+ex:Student a owl:Class .
+ex:Instructor a owl:Class .
+ex:Assignment a owl:Class .
+ex:Exam a owl:Class .
+ex:TestExam a owl:Class ;
+    rdfs:subClassOf ex:Exam .
+ex:FinalExam a owl:Class ;
+    rdfs:subClassOf ex:Exam .
+ex:MidtermExam a owl:Class ;
+    rdfs:subClassOf ex:Exam .
+
+# Additional Classes
+ex:CourseMaterial a owl:Class .
+ex:Lecture a owl:Class ;
+    rdfs:subClassOf ex:CourseMaterial .
+ex:Reading a owl:Class ;
+    rdfs:subClassOf ex:CourseMaterial .
+ex:Project a owl:Class .
+ex:PerformanceMetric a owl:Class .
+
+# Object Properties
+ex:hasInstructor a owl:ObjectProperty ;
+    rdfs:domain ex:StatisticsCourse ;
+    rdfs:range ex:Instructor .
+
+ex:hasStudent a owl:ObjectProperty ;
+    rdfs:domain ex:StatisticsCourse ;
+    rdfs:range ex:Student .
+
+ex:hasAssignment a owl:ObjectProperty ;
+    rdfs:domain ex:StatisticsCourse ;
+    rdfs:range ex:Assignment .
+
+ex:hasExam a owl:ObjectProperty ;
+    rdfs:domain ex:StatisticsCourse ;
+    rdfs:range ex:Exam .
+
+ex:hasStatisticalConcept a owl:ObjectProperty ;
+    rdfs:domain ex:StatisticsCourse ;
+    rdfs:range ex:StatisticalConcept .
+
+ex:hasStatisticalOperation a owl:ObjectProperty ;
+    rdfs:domain ex:StatisticalConcept ;
+    rdfs:range ex:StatisticalOperation .
+
+ex:includesMaterial a owl:ObjectProperty ;
+    rdfs:domain ex:StatisticsCourse ;
+    rdfs:range ex:CourseMaterial .
+
+ex:hasLecture a owl:ObjectProperty ;
+    rdfs:domain ex:CourseMaterial ;
+    rdfs:range ex:Lecture .
+
+ex:hasReading a owl:ObjectProperty ;
+    rdfs:domain ex:CourseMaterial ;
+    rdfs:range ex:Reading .
+
+ex:hasProject a owl:ObjectProperty ;
+    rdfs:domain ex:StatisticsCourse ;
+    rdfs:range ex:Project .
+
+ex:hasPerformanceMetric a owl:ObjectProperty ;
+    rdfs:domain ex:Student ;
+    rdfs:range ex:PerformanceMetric .
+
+# Data Properties
+ex:courseName a owl:DatatypeProperty ;
+    rdfs:domain ex:StatisticsCourse ;
+    rdfs:range xsd:string .
+
+ex:courseCode a owl:DatatypeProperty ;
+    rdfs:domain ex:StatisticsCourse ;
+    rdfs:range xsd:string .
+
+ex:credits a owl:DatatypeProperty ;
+    rdfs:domain ex:StatisticsCourse ;
+    rdfs:range xsd:integer .
+
+ex:studentName a owl:DatatypeProperty ;
+    rdfs:domain ex:Student ;
+    rdfs:range xsd:string .
+
+ex:studentID a owl:DatatypeProperty ;
+    rdfs:domain ex:Student ;
+    rdfs:range xsd:string .
+
+ex:instructorName a owl:DatatypeProperty ;
+    rdfs:domain ex:Instructor ;
+    rdfs:range xsd:string .
+
+ex:assignmentTitle a owl:DatatypeProperty ;
+    rdfs:domain ex:Assignment ;
+    rdfs:range xsd:string .
+
+ex:examDate a owl:DatatypeProperty ;
+    rdfs:domain ex:Exam ;
+    rdfs:range xsd:date .
+
+ex:resultValue a owl:DatatypeProperty ;
+    rdfs:domain ex:CalculationResult ;
+    rdfs:range xsd:decimal .
+
+ex:resultDate a owl:DatatypeProperty ;
+    rdfs:domain ex:CalculationResult ;
+    rdfs:range xsd:date .
+
+ex:lectureTitle a owl:DatatypeProperty ;
+    rdfs:domain ex:Lecture ;
+    rdfs:range xsd:string .
+
+ex:readingTitle a owl:DatatypeProperty ;
+    rdfs:domain ex:Reading ;
+    rdfs:range xsd:string .
+
+ex:projectTitle a owl:DatatypeProperty ;
+    rdfs:domain ex:Project ;
+    rdfs:range xsd:string .
+
+ex:metricType a owl:DatatypeProperty ;
+    rdfs:domain ex:PerformanceMetric ;
+    rdfs:range xsd:string .
+
+ex:metricValue a owl:DatatypeProperty ;
+    rdfs:domain ex:PerformanceMetric ;
+    rdfs:range xsd:decimal .
+
+# Example Instances
+ex:IntroToStats a ex:IntroductoryStatistics ;
+    ex:courseName "Introduction to Statistics" ;
+    ex:courseCode "STAT101" ;
+    ex:credits 3 ;
+    ex:hasInstructor ex:DrSmith ;
+    ex:hasStudent ex:JohnDoe ;
+    ex:hasAssignment ex:Assignment1 ;
+    ex:hasExam ex:MidtermExam1 ;
+    ex:includesMaterial ex:Lecture1 .
+
+ex:Lecture1 a ex:Lecture ;
+    ex:lectureTitle "Introduction to Descriptive Statistics" .
+
+ex:Reading1 a ex:Reading ;
+    ex:readingTitle "Statistics for Beginners" .
+
+ex:Project1 a ex:Project ;
+    ex:projectTitle "Statistics Project on Data Analysis" .
+
+ex:PerformanceMetric1 a ex:PerformanceMetric ;
+    ex:metricType "Exam Score" ;
+    ex:metricValue 85.5 .

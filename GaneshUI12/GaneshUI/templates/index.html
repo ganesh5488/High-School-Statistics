@@ -1,0 +1,61 @@
+ <!DOCTYPE html>
+<html lang="en">
+
+<head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Statistics Ontology</title>
+      <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+      <script>
+            function toggleSubclasses(className) {
+                  const subclassList = document.getElementById(className);
+                  if (subclassList.style.display === "none" || subclassList.style.display === "") {
+                        subclassList.style.display = "block";
+                  } else {
+                        subclassList.style.display = "none";
+                  }
+            }
+
+            function loadClasses() {
+                  document.getElementById('load-button').style.display = 'none'; // Hide the load button
+                  document.getElementById('ontology').style.display = 'block'; // Show the ontology section
+            }
+      </script>
+</head>
+
+<body>
+      <div class="container">
+            <header>
+                  <h1>Teaching Statistics </h1>
+                  <p>This Teaching Statistics ontology serves as a comprehensive educational resource for learners interested in
+                        statistics, particularly. By combining theoretical knowledge with practicalapplication, the ontology enhances learning outcomes and equips students with the skills necessary for further
+                        exploration in the field of statistics and data analysis.
+                  </p>
+                  <button id="load-button" onclick="loadClasses()">Lets Learn</button>
+            </header>
+           
+            <main>
+                  <div id="ontology" class="card-container" style="display: none;">
+                        {% for class, subclasses in classes.items() %}
+                        <div class="card">
+                              <h2 onclick="toggleSubclasses('{{ class }}')" class="class-title">{{ class }}</h2>
+                              <ul id="{{ class }}" class="subclass-list" style="display: none;">
+                                    {% for subclass in subclasses %}
+                                    <li class="subclass">
+                                          <a href="/subclass/{{ subclass }}">{{ subclass }}</a>
+                                    </li>
+                                    {% endfor %}
+                              </ul>
+                        </div>
+                        {% endfor %}
+                  </div>
+            </main>
+            <footer>
+                  <p>© 2023 Statistics Ontology. All rights reserved.</p>
+            </footer>
+      </div>
+</body>
+
+</html>
+
+

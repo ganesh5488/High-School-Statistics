@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>{{ subclass_name }} - Mode Calculation</title>
+      <link rel="stylesheet" href="{{ url_for('static', filename='style_calc.css') }}">
+</head>
+
+<body>
+      <div class="container">
+            <header>
+                  <h1>{{ subclass_name }} Calculation</h1>
+            </header>
+            <main>
+                  <p>
+                        The arithmetic mode, often simply referred to as the mode, is a measure of central tendency that represents the
+                        value that appears most frequently in a dataset. It is particularly useful in statistics for understanding the
+                        most common value in a set of data, especially when the dataset contains repeated values.
+                  </p>
+                  <p>
+                        To find the mode, you need to identify the value(s) that occur most frequently in the dataset. A dataset may have
+                        one mode (unimodal), more than one mode (bimodal or multimodal), or no mode at all if all values occur with the
+                        same frequency.
+                  </p>
+                  <p>
+                        For example, consider the following set of numbers: 4, 1, 2, 2, 3, 4, 4, 5. To calculate the mode:
+                  </p>
+                  <p>
+                        1. Identify the frequency of each number:
+                  <ul>
+                        <li>1 appears 1 time</li>
+                        <li>2 appears 2 times</li>
+                        <li>3 appears 1 time</li>
+                        <li>4 appears 3 times</li>
+                        </li>
+                        <li>5 appears 1 time</li>
+                  </ul>
+                  </p>
+                  <p>
+                        2. The number that appears most frequently is <strong>4</strong>, which occurs 3 times. Therefore, the mode of
+                        this dataset is <strong>4</strong>.
+                  </p>
+                  <p>
+                        Now consider another example with the numbers: 1, 2, 2, 3, 3, 4. To find the mode:
+                  </p>
+                  <p>
+                        1. Identify the frequency of each number:
+                  <ul>
+                        <li>1 appears 1 time</li>
+                        <li>2 appears 2 times</li>
+                        <li>3 appears 2 times</li>
+                        <li>4 appears 1 time</li>
+                  </ul>
+                  </p>
+                  <p>
+                        2. In this case, both <strong>2</strong> and <strong>3</strong> appear most frequently (2 times each). Therefore,
+                        this dataset is bimodal, and the modes are <strong>2</strong> and <strong>3</strong>.
+                  </p>
+                  <h2>Calculate Mode</h2>
+                  <form action="/subclass/mode/calculate_mode" method="post">
+                        <label for="numbers">Enter numbers (comma-separated):</label><br>
+                        <input type="text" id="numbers" name="numbers" required>
+                        <input type="submit" value="Calculate Mode">
+                  </form>
+
+                  {% if mode is not none %}
+                  <h3>Mode: {{ mode }}</h3>
+                  {% endif %}
+            </main>
+            <footer>
+                  <a href="/" class="back-button">Home</a>
+            </footer>
+      </div>
+</body>
+
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>{{ subclass_name }} - Mean Calculation</title>
+      <link rel="stylesheet" href="{{ url_for('static', filename='style_calc.css') }}">
+</head>
+
+<body>
+      <div class="container">
+            <header>
+                  <h1>{{ subclass_name }} Calculation</h1>
+            </header>
+            <main>
+                  <p>
+                        The arithmetic mean, commonly referred to as the "mean" or "average," is a measure of central tendency that is
+                        calculated by summing a set of values and then dividing by the number of values. It provides a simple way to
+                        summarize a collection of numbers with a single value.
+                  </p>
+                  <p>
+                        The formula for calculating the arithmetic mean is given by:
+                  </p>
+                  <p>
+                        <strong>Mean (<span style="text-decoration: overline;">x</span>) = (x₁ + x₂ + x₃ + ... + xₙ) / n</strong>
+                  </p>
+                  <p>
+                        Where:
+                  <ul>
+                        <li><strong>x₁, x₂, x₃, ..., xₙ</strong> are the individual values in the dataset.</li>
+                        <li><strong>n</strong> is the total number of values.</li>
+                  </ul>
+                  </p>
+                  <p>
+                        For example, consider the following set of numbers: 4, 8, 6, 5, and 3. To calculate the arithmetic mean:
+                  </p>
+                  <p>
+                        1. First, sum the values: 4 + 8 + 6 + 5 + 3 = 26.
+                  </p>
+                  <p>
+                        2. Next, divide the sum by the number of values: 26 / 5 = 5.2.
+                  </p>
+                  <p>
+                        Therefore, the arithmetic mean of the set is <strong>5.2</strong>.
+                  </p>
+
+                  <h2>Calculate Mean</h2>
+                  <form action="/subclass/mean/calculate_mean" method="post">
+                        <label for="numbers">Enter numbers (comma-separated):</label><br>
+                        <input type="text" id="numbers" name="numbers" required>
+                        <input type="submit" value="Calculate Mean">
+                  </form>
+
+                  {% if mean is not none %}
+                  <p>The calculated mean: {{ mean }}</p>
+                  {% endif %}
+            </main>
+      <footer>
+            <a href="/" class="back-button">Home</a>
+      </footer>
+      </div>
+      
+</body>
+
+</html>
